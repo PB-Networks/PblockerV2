@@ -1,6 +1,6 @@
 self.__uv$config = {
-    prefix: '/service/',
-    bare: 'https://bare.benrogo.net',
+    prefix: '/a/',
+    bare: 'https://noleaking.iii.cl/bare/',
     encodeUrl: Ultraviolet.codec.xor.encode,
     decodeUrl: Ultraviolet.codec.xor.decode,
     handler: '/uv/uv.handler.js',
