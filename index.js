@@ -1,36 +1,73 @@
-"use strict";
-/**
- * @type {HTMLFormElement}
- */
-const form = document.getElementById("uv-form");
-/**
- * @type {HTMLInputElement}
- */
-const address = document.getElementById("uv-address");
-/**
- * @type {HTMLInputElement}
- */
-const searchEngine = document.getElementById("uv-search-engine");
-/**
- * @type {HTMLParagraphElement}
- */
-const error = document.getElementById("uv-error");
-/**
- * @type {HTMLPreElement}
- */
-const errorCode = document.getElementById("uv-error-code");
+import express from 'express'
+import http from 'node:http'
+import { createBareServer } from '@tomphttp/bare-server-node'
+import path from 'node:path'
+import cors from 'cors'
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
+const __dirname = process.cwd()
+const server = http.createServer()
+const app = express(server)
+const bareServer = createBareServer('/v/')
+const PORT = 8080
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
+app.use(express.static(path.join(__dirname, 'static')))
+
+const routes = [
+  { path: '/', file: 'index.html' },
+  { path: '/~', file: 'apps.html' },
+  { path: '/-', file: 'games.html' },
+  { path: '/!', file: 'settings.html' },
+  { path: '/0', file: 'tabs.html' },
+  { path: '/&', file: 'go.html' },
+  { path: '/w', file: 'edu.html' },
+]
+
+app.get('/y/*', cors({ origin: false }), async (req, res, next) => {
   try {
-    await registerSW();
-  } catch (err) {
-    error.textContent = "Failed to register service worker.";
-    errorCode.textContent = err.toString();
-    throw err;
-  }
+    const reqTarget = `https://raw.githubusercontent.com/ypxa/y/main/${req.params[0]}`
+    const asset = await fetch(reqTarget)
 
-  const url = search(address.value, searchEngine.value);
-  location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
-});
+    if (asset.ok) {
+      const data = await asset.arrayBuffer()
+      res.end(Buffer.from(data))
+    } else {
+      next()
+    }
+  } catch (error) {
+    console.error('Error fetching:', error)
+    next(error)
+  }
+})
+
+routes.forEach((route) => {
+  app.get(route.path, (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', route.file))
+  })
+})
+
+server.on('request', (req, res) => {
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeRequest(req, res)
+  } else {
+    app(req, res)
+  }
+})
+
+server.on('upgrade', (req, socket, head) => {
+  if (bareServer.shouldRoute(req)) {
+    bareServer.routeUpgrade(req, socket, head)
+  } else {
+    socket.end()
+  }
+})
+
+server.on('listening', () => {
+  console.log(`Running at http://localhost:${PORT}`)
+})
+
+server.listen({
+  port: PORT,
+})
