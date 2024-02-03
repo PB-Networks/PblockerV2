@@ -1,6 +1,6 @@
 {
-  "name": "crimson",
-  "version": "5.1.0",
+  "name": "pblocker",
+  "version": "2",
   "type": "module",
   "engines": {
     "npm": ">=7.0.0",
