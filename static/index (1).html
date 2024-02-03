@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+  />
+  <title>PB | Proxy</title>
+  <meta
+    name="description"
+    content="Pblocker is a Proxy to unblock supported sites at school!"
+  />
+  <meta
+    name="keywords"
+    content="proxy, web proxy, Pblocker, service workers, unblock websites, unblock chromebook, free web proxy, proxy list, proxy sites, un block chromebook, online proxy, proxy server, proxysite, proxy youtube, bypass securly, bypass iboss, bypass lightspeed filter, holy unblocker, chromebooks, titanium network, unblock youtube, youtube proxy, unblocked youtube, youtube unblocked"
+  />
+  <meta
+    name="theme-color"
+    media="(prefers-color-scheme: dark)"
+    content="#434c5e"
+  />
+  <meta name="googlebot" content="index, follow, snippet" />
+  <link rel="shortcut icon" content="favicon.ico" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      position: relative;
+    }
+
+    .header {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      float: left;
+      padding: 10px 50px;
+    }
+
+    .proxy-links {
+      display: flex;
+    }
+
+    .proxy-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 30px;
+      padding: 12px 60px;
+      border-radius: 50px;
+      transition: background-color 0.3s;
+    }
+
+    .proxy-links a:hover {
+      background-color: #555;
+    }
+
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    h1 {
+      color: white;
+      margin: 0;
+      font-size: 36px;
+    }
+
+    #uv-form {
+      margin-top: 20px;
+    }
+
+    .desc {
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .left-margin {
+      margin-left: 20px;
+    }
+
+    .discord-button,
+    .github-button {
+      position: fixed;
+      bottom: 20px;
+      border-radius: 50%;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .discord-button {
+      right: 80px;
+      background-color: #7289da;
+    }
+
+    .github-button {
+      right: 20px;
+      background-color: #24292e;
+    }
+
+    .discord-button:hover {
+      background-color: #5865a1;
+    }
+
+    .github-button:hover {
+      background-color: #2c3136;
+    }
+
+    #uv-address {
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #7289da;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    #uv-address:focus {
+      border-color: #5865a1;
+    }
+
+    #quote-section pre {
+      cursor: pointer;
+      background-color: #7289da;
+      color: white;
+      border: none;
+      border-radius: 18px;
+      padding: 12px 24px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    #quote-section pre:hover {
+      background-color: #5865a1;
+    }
+  </style>
+  <script src="uv/uv.bundle.js" defer></script>
+  <script src="uv/uv.config.js" defer></script>
+  <script src="register-sw.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="proxy-links">
+      <a href="index.html">Proxy</a>
+      <a href="static/soon.html">Games</a>
+      <a href="static/soon.html">Apps</a>
+      <a href="#">Settings</a>
+    </div>
+  </div>
+
+  <div class="flex-center">
+    <h1>Pblocker | V2</h1>
+
+    <form id="uv-form">
+      <input
+        id="uv-search-engine"
+        value="https://www.google.com/search?q=%s"
+        type="hidden"
+      />
+      <input id="uv-address" type="text" placeholder="Search with Google or URL..." />
+    </form>
+
+    <div id="quote-section" class="desc left-margin">
+      <p id="uv-error"></p>
+      <pre id="uv-error-code" onclick="changeQuote()"></pre>
+    </div>
+  </div>
+
+  <div class="discord-button">
+    <a href="https://discord.gg/jBQzvXsxsJ" target="_blank" rel="noopener noreferrer">
+      <img src="https://seeklogo.com/images/D/discord-logo-7A1EC3216C-seeklogo.com.png" alt="Discord" width="40" height="40" />
+    </a>
+  </div>
+
+  <div class="github-button">
+    <a href="https://github.com/PB-Networks/PblockerV2" target="_blank" rel="noopener noreferrer">
+      <img src="https://icons.veryicon.com/png/o/miscellaneous/boxicons/git-repo-forked.png" alt="GitHub" width="40" height="40" />
+    </a>
+  </div>
+
+  <script>
+    const quotes = [
+      "Hello There!",
+      "What are you doing here? GO STUDY!",
+      "If you are 10 year GET THE FUCK OUT!",
+      "Check Out Games and Apps",
+      "What proxy you use the most?",
+      "ALERT: There is a teacher behind you 😈",
+      "❤️ o7 BigFoot",
+      "Any Issue let us know",
+      "Join our Discord server",
+      "Link blocked? Join Us To get more",
+      "Sub to our Channel Pblocker",
+      "You Like Pblocker V2?",
+      "Guilded.gg Is L Discord Da Best",
+      "I HAVE YOUR IP 😈",
+      "Link Leakers always fails!",
+      "Request A Game - App",
+      "Roblox Kids Play Diff game bro",
+      "We make custom Proxy and Give it Away to People In our server",
+      "discord.gg/jBQzvXsxsJ",
+      "Unblock Supported sites at PB",
+    ];
+
+    function changeQuote() {
+      const quoteIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[quoteIndex];
+      document.getElementById("uv-error-code").textContent = randomQuote;
+    }
+
+    changeQuote(); 
+  </script>
+</body>
+</html>
