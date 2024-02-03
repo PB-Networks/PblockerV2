@@ -161,20 +161,11 @@
   <div class="flex-center">
     <h1>Pblocker | V2</h1>
 
-    <form id="uv-form">
-      <input
-        id="uv-search-engine"
-        value="https://www.google.com/search?q=%s"
-        type="hidden"
-      />
-      <input id="uv-address" type="text" placeholder="Search with Google or URL..." />
-    </form>
-
-    <div id="quote-section" class="desc left-margin">
-      <p id="uv-error"></p>
-      <pre id="uv-error-code" onclick="changeQuote()"></pre>
-    </div>
-  </div>
+    <div class="search-container">
+          <form method="POST">
+            <input class="search-container" placeholder="Search with Google or enter address" type="text" />
+          </form>
+    </div>  
 
   <div class="discord-button">
     <a href="https://discord.gg/jBQzvXsxsJ" target="_blank" rel="noopener noreferrer">
@@ -187,7 +178,9 @@
       <img src="https://icons.veryicon.com/png/o/miscellaneous/boxicons/git-repo-forked.png" alt="GitHub" width="40" height="40" />
     </a>
   </div>
-
+  <script src="assets/scripts/index.js?v=1"></script>
+  <script src="./m/bundle.js"></script>
+  <script src="./m/config.js"></script>
   <script>
     const quotes = [
       "Hello There!",
