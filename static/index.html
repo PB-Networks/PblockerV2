@@ -140,6 +140,47 @@
     #quote-section pre:hover {
       background-color: #5865a1;
     }
+    
+    .search-container {
+  margin-top: 20px;
+}
+
+.search-container form {
+  position: relative;
+}
+
+.search-container input {
+  width: 350px; 
+  padding: 12px; 
+  border: 2px solid #7289da;
+  border-radius: 25px; 
+  outline: none;
+  transition: border-color 0.3s;
+  font-size: 18px; 
+}
+
+.search-container input:focus {
+  border-color: #5865a1;
+}
+
+.search-container::before {
+  content: "\1F50D"; 
+  font-size: 24px; 
+  color: #7289da;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+
+.search-container input {
+  background: url('path/to/your/search-icon.png') no-repeat right 20px center;
+  background-size: 24px; 
+  padding-right: 50px; 
+}
+
   </style>
   <script src="uv/uv.bundle.js" defer></script>
   <script src="uv/uv.config.js" defer></script>
