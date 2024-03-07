@@ -142,51 +142,65 @@
     }
     
     .search-container {
-  margin-top: 20px;
-}
+      margin-top: 20px;
+    }
 
-.search-container form {
-  position: relative;
-}
+    .search-container form {
+      position: relative;
+    }
 
-.search-container input {
-  width: 350px; 
-  padding: 12px; 
-  border: 2px solid #7289da;
-  border-radius: 25px; 
-  outline: none;
-  transition: border-color 0.3s;
-  font-size: 18px; 
-}
+    .search-container input {
+      width: 350px; 
+      padding: 12px; 
+      border: 2px solid #7289da;
+      border-radius: 25px; 
+      outline: none;
+      transition: border-color 0.3s;
+      font-size: 18px; 
+    }
 
-.search-container input:focus {
-  border-color: #5865a1;
-}
+    .search-container input:focus {
+      border-color: #5865a1;
+    }
 
-.search-container::before {
-  content: "\1F50D"; 
-  font-size: 24px; 
-  color: #7289da;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  z-index: 1;
-}
+    .search-container::before {
+      content: "\1F50D"; 
+      font-size: 24px; 
+      color: #7289da;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
 
+    .search-container input {
+      background: url('path/to/your/search-icon.png') no-repeat right 20px center;
+      background-size: 24px; 
+      padding-right: 50px; 
+    }
 
-.search-container input {
-  background: url('path/to/your/search-icon.png') no-repeat right 20px center;
-  background-size: 24px; 
-  padding-right: 50px; 
-}
-
+    #clock {
+      font-size: 24px;
+      margin-top: 20px;
+    }
   </style>
   <script src="uv/uv.bundle.js" defer></script>
   <script src="uv/uv.config.js" defer></script>
   <script src="register-sw.js" defer></script>
   <script src="search.js" defer></script>
   <script src="index.js" defer></script>
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+    setInterval(updateTime, 1000);
+  </script>
 </head>
 
 <body>
@@ -203,56 +217,59 @@
     <h1>Pblocker | V2</h1>
 
     <div class="search-container">
-          <form method="POST">
-            <input class="search-container" placeholder="Search with Google or enter address" type="text" />
-          </form>
-    </div>  
+      <form method="POST">
+        <input class="search-container" placeholder="Search with Google or enter address" type="text" />
+      </form>
+    </div>
 
-  <div class="discord-button">
-    <a href="https://discord.gg/jBQzvXsxsJ" target="_blank" rel="noopener noreferrer">
-      <img src="https://seeklogo.com/images/D/discord-logo-7A1EC3216C-seeklogo.com.png" alt="Discord" width="40" height="40" />
-    </a>
+    <div id="clock"></div> <!-- This is where the clock will appear -->
+
+    <div class="discord-button">
+      <a href="https://discord.gg/jBQzvXsxsJ" target="_blank" rel="noopener noreferrer">
+        <img src="https://seeklogo.com/images/D/discord-logo-7A1EC3216C-seeklogo.com.png" alt="Discord" width="40" height="40" />
+      </a>
+    </div>
+
+    <div class="github-button">
+      <a href="https://github.com/PB-Networks/PblockerV2" target="_blank" rel="noopener noreferrer">
+        <img src="https://icons.veryicon.com/png/o/miscellaneous/boxicons/git-repo-forked.png" alt="GitHub" width="40" height="40" />
+      </a>
+    </div>
+    <script src="assets/scripts/index.js?v=1"></script>
+    <script src="/m/bundle.js"></script>
+    <script src="/m/config.js"></script>
+    <script>
+      const quotes = [
+        "Hello There!",
+        "What are you doing here? GO STUDY!",
+        "If you are 10 year GET THE FUCK OUT!",
+        "Check Out Games and Apps",
+        "What proxy you use the most?",
+        "ALERT: There is a teacher behind you 😈",
+        "❤️ o7 BigFoot",
+        "Any Issue let us know",
+        "Join our Discord server",
+        "Link blocked? Join Us To get more",
+        "Sub to our Channel Pblocker",
+        "You Like Pblocker V2?",
+        "Guilded.gg Is L Discord Da Best",
+        "I HAVE YOUR IP 😈",
+        "Link Leakers always fails!",
+        "Request A Game - App",
+        "Roblox Kids Play Diff game bro",
+        "We make custom Proxy and Give it Away to People In our server",
+        "discord.gg/jBQzvXsxsJ",
+        "Unblock Supported sites at PB",
+      ];
+
+      function changeQuote() {
+        const quoteIndex = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[quoteIndex];
+        document.getElementById("uv-error-code").textContent = randomQuote;
+      }
+
+      changeQuote(); 
+    </script>
   </div>
-
-  <div class="github-button">
-    <a href="https://github.com/PB-Networks/PblockerV2" target="_blank" rel="noopener noreferrer">
-      <img src="https://icons.veryicon.com/png/o/miscellaneous/boxicons/git-repo-forked.png" alt="GitHub" width="40" height="40" />
-    </a>
-  </div>
-  <script src="assets/scripts/index.js?v=1"></script>
-  <script src="/m/bundle.js"></script>
-  <script src="/m/config.js"></script>
-  <script>
-    const quotes = [
-      "Hello There!",
-      "What are you doing here? GO STUDY!",
-      "If you are 10 year GET THE FUCK OUT!",
-      "Check Out Games and Apps",
-      "What proxy you use the most?",
-      "ALERT: There is a teacher behind you 😈",
-      "❤️ o7 BigFoot",
-      "Any Issue let us know",
-      "Join our Discord server",
-      "Link blocked? Join Us To get more",
-      "Sub to our Channel Pblocker",
-      "You Like Pblocker V2?",
-      "Guilded.gg Is L Discord Da Best",
-      "I HAVE YOUR IP 😈",
-      "Link Leakers always fails!",
-      "Request A Game - App",
-      "Roblox Kids Play Diff game bro",
-      "We make custom Proxy and Give it Away to People In our server",
-      "discord.gg/jBQzvXsxsJ",
-      "Unblock Supported sites at PB",
-    ];
-
-    function changeQuote() {
-      const quoteIndex = Math.floor(Math.random() * quotes.length);
-      const randomQuote = quotes[quoteIndex];
-      document.getElementById("uv-error-code").textContent = randomQuote;
-    }
-
-    changeQuote(); 
-  </script>
 </body>
 </html>
